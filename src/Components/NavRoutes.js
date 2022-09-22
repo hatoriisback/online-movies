@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "../Pages/Home";
 import Movies from "../Pages/Movies";
 import SearchMovies from "../Pages/SearchMovies";
+import DetailMovie from "../Pages/DetailMovie";
 
 export default function NavRoutes() {
   return (
@@ -11,6 +12,7 @@ export default function NavRoutes() {
       <Route path="movies">
         <Route path="" element={<Movies />} />
         <Route path="search/:moviesTitle" element={<SearchMovies />} />
+        <Route path=":moviesTitle" element={<DetailMovie />} />
       </Route>
     </Routes>
   );

@@ -1,21 +1,21 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
-import { fetchMovies } from "../store/movie/movieSlice";
+import { useSelector } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export default function NavBar() {
   const filterMovies = useSelector((state) => state.movies.list);
-  const dispatch = useDispatch();
 
   const [searchVal, setSearchVal] = useState("");
-  const params = useParams();
+  const navigate = useNavigate();
 
-  const doFilterFetchMovies = () => {
-    dispatch(fetchMovies(params.moviesTitle));
-  };
-
-  const handleSearchVal = (e) => {
-    setSearchVal(e.target.value);
+  const searchMovies = (searchList) => {
+    setSearchVal(searchList);
+    filterMovies.filter((movie) => {
+      return Object.values(movie)
+        .join(" ")
+        .toLowerCase()
+        .includes(searchVal.toLowerCase());
+    });
   };
 
   return (
@@ -42,27 +42,22 @@ export default function NavBar() {
               Movies
             </NavLink>
           </li>
-          {/* <li className="nav-item">
-            <NavLink className="nav-link" to={`search/${params.moviesTitle}`}>
-              Search Movies
-            </NavLink>
-          </li> */}
         </ul>
         <form className="form-inline my-2 my-lg-0">
           <input
             value={searchVal}
-            onChange={handleSearchVal}
+            onChange={(e) => searchMovies(e.target.value)}
             className="form-control mr-sm-2"
             type="text"
             placeholder="Search"
             aria-label="Search"
           />
-          {/* <button
+          <button
             className="btn btn-outline-success my-2 my-sm-0"
-            onClick={() => navigate({doFetchMovies})}
+            onClick={() => navigate(`movies/search/${searchVal}`)}
           >
             Search
-          </button> */}
+          </button>
         </form>
       </div>
     </nav>
