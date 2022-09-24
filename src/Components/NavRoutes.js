@@ -9,10 +9,11 @@ export default function NavRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+
       <Route path="movies">
         <Route path="" element={<Movies />} />
-        <Route path="search/:moviesTitle" element={<SearchMovies />} />
-        <Route path=":moviesTitle" element={<DetailMovie />} />
+        <Route path="search/:movieTitle" element={<SearchMovies />} />
+        <Route path="detail/:movieDetail" element={<DetailMovie />} />
       </Route>
     </Routes>
   );

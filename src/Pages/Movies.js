@@ -1,13 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { fetchMoviesPage } from "../store/movie/movieSlice";
 
 export default function Movies() {
-  const [movies, setMovies] = useState([]);
+  const fetchedMovies = useSelector((state) => state.movies.list);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    fetch("http://www.omdbapi.com/?apikey=34539ac1&s=pokemon")
-      .then((res) => res.json())
-      .then((data) => setMovies(data.Search));
-  }, []);
+  useEffect(
+    () => {
+      dispatch(fetchMoviesPage());
+
+      document.title = `Movies`.toUpperCase();
+    },
+    // eslint-disable-next-line
+    [dispatch]
+  );
 
   return (
     <div className="container-fluid wrapper-movies">
@@ -15,21 +24,23 @@ export default function Movies() {
       <br />
       <div className="movies-pages">
         <div className="row">
-          {movies.map((movie, i) => {
+          {fetchedMovies.map((movie) => {
             return (
               <div
-                key={i}
+                key={movie.imdbID}
                 className="col-12 col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4"
               >
                 <div
                   className="card"
                   style={{ width: "18rem", margin: "0 auto" }}
+                  onClick={() => navigate(`detail/${movie.imdbID}`)}
                 >
                   <img
                     className="card-img-top"
                     src={movie.Poster}
                     alt={movie.Title}
                   />
+
                   <div className="card-body">
                     <h5 className="card-title">{movie.Title}</h5>
                   </div>

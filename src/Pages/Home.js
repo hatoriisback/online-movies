@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://www.omdbapi.com/?apikey=34539ac1&s=avenger")
       .then((res) => res.json())
       .then((data) => setMovies(data.Search));
+
+    document.title = `Home`.toUpperCase();
   }, []);
 
   return (
@@ -15,21 +19,24 @@ export default function Home() {
       <br />
       <div className="movies-pages">
         <div className="row">
-          {movies.map((movie, i) => {
+          {movies.map((movie) => {
             return (
               <div
-                key={i}
+                key={movie.imdbID}
                 className="col-12 col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4"
               >
                 <div
                   className="card"
                   style={{ width: "18rem", margin: "0 auto" }}
                 >
-                  <img
-                    className="card-img-top"
-                    src={movie.Poster}
-                    alt={movie.Title}
-                  />
+                  <NavLink to={`${movie.moviesDetail}`}>
+                    <img
+                      className="card-img-top"
+                      src={movie.Poster}
+                      alt={movie.Title}
+                      onClick={() => navigate(`movies/detail/${movie.imdbID}`)}
+                    />
+                  </NavLink>
                   <div className="card-body">
                     <h5 className="card-title">{movie.Title}</h5>
                   </div>
@@ -40,7 +47,6 @@ export default function Home() {
           {/* <pre>{JSON.stringify(movies, null, 2)}</pre> */}
         </div>
       </div>
-
     </div>
   );
 }
