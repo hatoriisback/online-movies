@@ -25,31 +25,47 @@ export default function DetailMovie() {
       <div className="jumbotron">
         <div
           className="list-detailmovie"
-          style={{ width: "auto", height: "30rem", margin: "0 auto" }}
+          style={{ width: "auto", minHeight: "30rem", margin: "0 auto" }}
         >
-          <div
-            className="left-side"
-            style={{ textAlign: "left", position: "absolute" }}
-          >
-            <img
-              src={filteredMoviesDetail.Poster}
-              alt={filteredMoviesDetail.Title}
-            />
-          </div>
-          <div className="right-side" style={{ textAlign: "right" }}>
-            <h1 className="display-4">{filteredMoviesDetail.Title}</h1>
-            <p className="lead">Year Released: {filteredMoviesDetail.Year}</p>
-            <p className="lead">Genre: {filteredMoviesDetail.Type}</p>
-
-            <p className="lead">
-              <NavLink
-                className="btn btn-primary btn-lg"
-                role="button"
-                to="../../movies"
+          <div className="row">
+            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+              <div
+                className="left-side"
+                style={{ textAlign: "left", position: "absolute" }}
               >
-                BACK MOVIES
-              </NavLink>
-            </p>
+                <img
+                  style={{ height: "auto" }}
+                  src={filteredMoviesDetail.Poster}
+                  alt={filteredMoviesDetail.Title}
+                />
+              </div>
+            </div>
+
+            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+              <div
+                className="right-side"
+                style={{ textAlign: "justify" }}
+              >
+                <h1 className="display-4">{filteredMoviesDetail.Title}</h1>
+                <p className="lead">
+                  Year Released: {filteredMoviesDetail.Year}
+                </p>
+                <p className="lead">Genre: {filteredMoviesDetail.Type}</p>
+                <hr className="my-4" />
+                <p style={{ textAlign: "left" }}>
+                  Conclusions : {filteredMoviesDetail.Plot}
+                </p>
+                <p className="lead">
+                  <NavLink
+                    className="btn btn-primary btn-lg"
+                    role="button"
+                    to="../../movies"
+                  >
+                    BACK MOVIES
+                  </NavLink>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
