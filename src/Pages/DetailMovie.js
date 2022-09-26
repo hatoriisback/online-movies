@@ -29,10 +29,10 @@ export default function DetailMovie() {
           style={{ width: "auto", minHeight: "30rem", margin: "0 auto" }}
         >
           <div className="row">
-            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mb-5 mb-sm-5 mb-md-5 mb-lg-5 mb-xl-5">
               <div
                 className="left-side"
-                style={{ textAlign: "left", position: "absolute" }}
+                style={{ textAlign: "left" }}
               >
                 <img
                   style={{ height: "auto" }}

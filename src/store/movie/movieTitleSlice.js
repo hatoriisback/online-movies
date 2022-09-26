@@ -7,7 +7,7 @@ const initialState = {
 export const fetchMoviesPage = createAsyncThunk(
   "movies/detail/fetchMoviesPage",
   async () => {
-    const res = await fetch(`http://www.omdbapi.com/?apikey=34539ac1&s=bible`);
+    const res = await fetch(`https://www.omdbapi.com/?apikey=34539ac1&s=bible`);
     const data = await res.json();
 
     return data.Search;
