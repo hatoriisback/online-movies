@@ -7,14 +7,15 @@ export default function DetailMovie() {
   const filteredMoviesDetail = useSelector((state) => state.movieDetails.list);
   const params = useParams();
   const dispatch = useDispatch();
+  const title = `${filteredMoviesDetail.Title}`
 
   useEffect(
     () => {
-      dispatch(fetchMoviesDetail(params.movieDetail));
-      document.title = `${filteredMoviesDetail.Title}`;
+      dispatch(fetchMoviesDetail(params.movieDetail))
+      document.title = title
     },
     // eslint-disable-next-line
-    []
+    [title]
   );
 
   return (
