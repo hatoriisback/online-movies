@@ -34,6 +34,7 @@ export default function Home() {
                       className="card-img-top"
                       src={movie.Poster}
                       alt={movie.Title}
+                      // ! not yet finished
                       onClick={() => navigate(`movies/detail/${movie.imdbID}`)}
                     />
                   </NavLink>
@@ -44,7 +45,6 @@ export default function Home() {
               </div>
             );
           })}
-          {/* <pre>{JSON.stringify(movies, null, 2)}</pre> */}
         </div>
       </div>
     </div>

@@ -19,7 +19,6 @@ export default function SearchMovies() {
     []
   );
 
-  // console.log(params);
   return (
     <div className="container-fluid wrapper-searchmovies">
       <h1>Search Keywords : {params.movieTitle}</h1>

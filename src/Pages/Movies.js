@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { fetchMoviesPage } from "../store/movie/movieSlice";
+import { fetchMoviesPage } from "../store/movie/movieTitleSlice";
 
 export default function Movies() {
-  const fetchedMovies = useSelector((state) => state.movies.list);
+  const fetchedMovies = useSelector((state) => state.moviesTitle.list);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -24,7 +24,7 @@ export default function Movies() {
       <br />
       <div className="movies-pages">
         <div className="row">
-          {fetchedMovies.map((movie) => {
+          {fetchedMovies.map((movie, i) => {
             return (
               <div
                 key={movie.imdbID}
@@ -48,7 +48,6 @@ export default function Movies() {
               </div>
             );
           })}
-          {/* <pre>{JSON.stringify(movies, null, 2)}</pre> */}
         </div>
       </div>
     </div>
