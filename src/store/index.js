@@ -11,5 +11,5 @@ export const store = configureStore({
     movieDetails: moviesDetailReducer,
     moviesTitle: moviesTitleReducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+  // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
