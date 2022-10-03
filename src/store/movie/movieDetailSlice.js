@@ -1,14 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  list: {},
+  list: [],
 };
 
 export const fetchMoviesDetail = createAsyncThunk(
   "movies/search/fetchMoviesDetail",
   async (movieDetail, thunkAPI) => {
     const res = await fetch(
-      `https://www.omdbapi.com/?apikey=34539ac1&i=${movieDetail}`
+      `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&i=${movieDetail}`
     );
     const data = await res.json();
 

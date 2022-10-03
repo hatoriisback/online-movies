@@ -8,7 +8,7 @@ export const fetchMovies = createAsyncThunk(
   "movies/fetchMovies",
   async (movieTitle, thunkAPI) => {
     const res = await fetch(
-      `https://www.omdbapi.com/?apikey=34539ac1&s=${movieTitle}`
+      `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&s=${movieTitle}`
     );
     const data = await res.json();
 
