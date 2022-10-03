@@ -6,7 +6,7 @@ export default function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("https://www.omdbapi.com/?apikey=34539ac1&s=avenger")
+    fetch(`https://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&s=avenger`)
       .then((res) => res.json())
       .then((data) => setMovies(data.Search));
 
