@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`https://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&s=avenger`)
+    fetch(
+      `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&s=avenger`
+    )
       .then((res) => res.json())
       .then((data) => setMovies(data.Search));
 
@@ -29,13 +30,13 @@ export default function Home() {
                   className="card"
                   style={{ width: "18rem", margin: "0 auto" }}
                 >
-                  <NavLink to={`${movie.moviesDetail}`}>
+                  <NavLink to={`/movies/detail/${movie.imdbID}`}>
                     <img
                       className="card-img-top"
                       src={movie.Poster}
                       alt={movie.Title}
                       // ! not yet finished
-                      onClick={() => navigate(`movies/detail/${movie.imdbID}`)}
+                      // onClick={() => navigate(`movies/detail/${movie.imdbID}`)}
                     />
                   </NavLink>
                   <div className="card-body">
